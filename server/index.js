@@ -2,7 +2,15 @@ const express = require('express');
 const mysql = require('mysql2');
 
 const cors = require('cors');
-app.use(cors());
+const app = express();
+
+// ใส่บรรทัดนี้ลงไปเพื่อเปิดประตูให้ Vercel เข้ามาคุยได้
+app.use(cors({
+  origin: "https://chef-mate-n384i0r5m-shux-cream.vercel.app", // ใส่ URL เว็บ Vercel ของคุณตรงนี้
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
