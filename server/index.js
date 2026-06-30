@@ -1,6 +1,9 @@
 const express = require('express');
 const mysql = require('mysql2');
+
 const cors = require('cors');
+app.use(cors());
+
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 const path = require('path');
