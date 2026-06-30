@@ -43,7 +43,7 @@ export default function RecipeManagement() {
   const loadRecipes = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3001/api/recipes");
+      const res = await fetch("https://chefmate-ild4.onrender.com/api/recipes");
       if (!res.ok) throw new Error("ไม่สามารถดึงข้อมูลได้");
       const data = await res.json();
       setRecipes(data);

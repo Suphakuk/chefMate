@@ -39,7 +39,11 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
     console.error("Upload Error: ไม่พบไฟล์ถูกส่งมา");
     return res.status(400).json({ message: "ไม่ได้แนบไฟล์รูปภาพมา" });
   }
-  const imageUrl = `http://localhost:3001/uploads/${req.file.filename}`;
+  
+  // ให้อ่านค่า BASE_URL จาก Cloud ถ้าไม่มีให้ใช้ localhost
+  const baseUrl = process.env.BASE_URL || 'https://chefmate-ild4.onrender.com';
+  const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
+  
   console.log("✅ อัปโหลดรูปสำเร็จ:", imageUrl);
   res.json({ url: imageUrl });
 });
@@ -47,24 +51,22 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 // ---------------------------------------------------------
 // 2. ตั้งค่าการเชื่อมต่อฐานข้อมูล MySQL
 // ---------------------------------------------------------
+// แก้ไขส่วนการเชื่อมต่อ MySQL เดิม ให้เป็นแบบนี้:
 const db = mysql.createConnection({
-  host: process.env.DB_HOST || 'mysql-29111f2-chefmate791f.k.aivencloud.com',
-  port: process.env.DB_PORT || 12068,
-  user: process.env.DB_USER || 'avnadmin',
-  // นำรหัสผ่านที่ได้จากการกดรูปตา (👁️) ในเว็บ Aiven มาใส่แทนคำว่า YOUR_PASSWORD_HERE
-  password: process.env.DB_PASSWORD || 'YOUR_PASSWORD_HERE', 
-  database: process.env.DB_NAME || 'defaultdb',
-  ssl: {
-    rejectUnauthorized: false // จำเป็นต้องเปิดใช้สำหรับ Aiven Cloud
-  }
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'chefmate_db',
+  port: process.env.DB_PORT || 3306,
+  ssl: process.env.DB_HOST ? { rejectUnauthorized: false } : false // เปิด SSL เมื่อขึ้น Cloud
 });
 
 db.connect((err) => {
   if (err) {
-    console.error('❌ เชื่อมต่อฐานข้อมูล Cloud ล้มเหลว: ' + err.stack);
+    console.error('❌ เชื่อมต่อฐานข้อมูลล้มเหลว: ' + err.stack);
     return;
   }
-  console.log('✅ เชื่อมต่อฐานข้อมูล MySQL (Cloud) สำเร็จ!');
+  console.log('✅ เชื่อมต่อฐานข้อมูล MySQL สำเร็จ!');
 });
 
 // ---------------------------------------------------------
@@ -334,6 +336,7 @@ app.delete('/api/ingredients/:id', (req, res) => {
 // ---------------------------------------------------------
 // เริ่มรันเซิร์ฟเวอร์
 // ---------------------------------------------------------
-app.listen(3001, () => {
-  console.log("🚀 Backend รันที่พอร์ต 3001");
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`🚀 Backend รันเสร็จสิ้นที่พอร์ต ${PORT}`);
 });

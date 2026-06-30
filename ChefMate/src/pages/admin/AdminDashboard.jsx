@@ -30,10 +30,10 @@ export default function AdminDashboard() {
       setLoading(true);
       // ดึงข้อมูลทั้งหมดพร้อมกัน (ใช้ catch แยกเพื่อไม่ให้ API ตัวใดตัวหนึ่งพังแล้วพังทั้งหน้า)
       const [uRes, rRes, vRes, sRes] = await Promise.all([
-        fetch("http://localhost:3001/api/users").then(res => res.ok ? res.json() : []).catch(() => []),
-        fetch("http://localhost:3001/api/recipes").then(res => res.ok ? res.json() : []).catch(() => []),
-        fetch("http://localhost:3001/api/videos").then(res => res.ok ? res.json() : []).catch(() => []),
-        fetch("http://localhost:3001/api/scans").then(res => res.ok ? res.json() : []).catch(() => []) // เผื่ออนาคต
+        fetch("https://chefmate-ild4.onrender.com/api/users").then(res => res.ok ? res.json() : []).catch(() => []),
+        fetch("https://chefmate-ild4.onrender.com/api/recipes").then(res => res.ok ? res.json() : []).catch(() => []),
+        fetch("https://chefmate-ild4.onrender.com/api/videos").then(res => res.ok ? res.json() : []).catch(() => []),
+        fetch("https://chefmate-ild4.onrender.com/api/scans").then(res => res.ok ? res.json() : []).catch(() => []) // เผื่ออนาคต
       ]);
 
       setUsers(uRes);

@@ -35,7 +35,7 @@ export default function IngredientManagement() {
   const loadIngredients = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3001/api/ingredients");
+      const res = await fetch("https://chefmate-ild4.onrender.com/api/ingredients");
       if (!res.ok) throw new Error("ไม่สามารถดึงข้อมูลได้");
       const data = await res.json();
       setIngredients(data);
@@ -59,7 +59,7 @@ export default function IngredientManagement() {
       return;
     }
 
-    const url = editingItem ? `http://localhost:3001/api/ingredients/${editingItem.id}` : "http://localhost:3001/api/ingredients";
+    const url = editingItem ? `https://chefmate-ild4.onrender.com/api/ingredients/${editingItem.id}` : "http://localhost:3001/api/ingredients";
     const method = editingItem ? "PUT" : "POST";
 
     try {

@@ -28,9 +28,9 @@ export default function UserDashboard() {
     try {
       setLoading(true);
       const [recipesRes, scansRes, favsRes] = await Promise.all([
-        fetch("http://localhost:3001/api/recipes").then(r => r.ok ? r.json() : []),
-        fetch("http://localhost:3001/api/scans").then(r => r.ok ? r.json() : []),
-        fetch("http://localhost:3001/api/favorites").then(r => r.ok ? r.json() : [])
+        fetch("https://chefmate-ild4.onrender.com/api/recipes").then(r => r.ok ? r.json() : []),
+        fetch("https://chefmate-ild4.onrender.com/api/scans").then(r => r.ok ? r.json() : []),
+        fetch("https://chefmate-ild4.onrender.com/api/favorites").then(r => r.ok ? r.json() : [])
       ]);
       setPopularRecipes(recipesRes.sort((a,b) => b.recommended_count - a.recommended_count).slice(0, 4));
       setRecentScans(scansRes.filter(s => s.created_by_id === user.id).slice(0, 3));

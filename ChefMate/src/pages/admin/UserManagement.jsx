@@ -42,7 +42,7 @@ export default function UserManagement() {
   const loadUsers = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3001/api/users");
+      const res = await fetch("https://chefmate-ild4.onrender.com/api/users");
       if (!res.ok) throw new Error("ไม่สามารถดึงข้อมูลได้");
       const data = await res.json();
       setUsers(data);
@@ -55,7 +55,7 @@ export default function UserManagement() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = editingUser ? `http://localhost:3001/api/users/${editingUser.id}` : "http://localhost:3001/api/users";
+    const url = editingUser ? `https://chefmate-ild4.onrender.com/api/users/${editingUser.id}` : "https://chefmate-ild4.onrender.com/api/users";
     const method = editingUser ? "PUT" : "POST";
 
     try {
@@ -84,7 +84,7 @@ export default function UserManagement() {
   const confirmDelete = async () => {
     if (!userToDelete) return;
     try {
-      const res = await fetch(`http://localhost:3001/api/users/${userToDelete.id}`, { method: "DELETE" });
+      const res = await fetch(`https://chefmate-ild4.onrender.com/api/users/${userToDelete.id}`, { method: "DELETE" });
       if (!res.ok) throw new Error("ลบไม่สำเร็จ");
       
       showToast("success", "สำเร็จ", "ลบผู้ใช้งานเรียบร้อยแล้ว");

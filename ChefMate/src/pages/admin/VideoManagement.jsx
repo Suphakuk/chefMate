@@ -40,8 +40,8 @@ export default function VideoManagement() {
       setLoading(true);
       // โหลดข้อมูลวิดีโอและเมนูอาหารพร้อมกัน
       const [videosRes, recipesRes] = await Promise.all([
-        fetch("http://localhost:3001/api/videos"),
-        fetch("http://localhost:3001/api/recipes")
+        fetch("https://chefmate-ild4.onrender.com/api/videos"),
+        fetch("https://chefmate-ild4.onrender.com/api/recipes")
       ]);
       
       if (!videosRes.ok || !recipesRes.ok) throw new Error("ไม่สามารถดึงข้อมูลได้");
@@ -57,7 +57,7 @@ export default function VideoManagement() {
 
   const loadVideosOnly = async () => {
     try {
-      const res = await fetch("http://localhost:3001/api/videos");
+      const res = await fetch("https://chefmate-ild4.onrender.com/api/videos");
       if (res.ok) setVideos(await res.json());
     } catch (err) {
       console.error(err);
@@ -77,7 +77,7 @@ export default function VideoManagement() {
       return;
     }
 
-    const url = editingItem ? `http://localhost:3001/api/videos/${editingItem.id}` : "http://localhost:3001/api/videos";
+    const url = editingItem ? `https://chefmate-ild4.onrender.com/api/videos/${editingItem.id}` : "https://chefmate-ild4.onrender.com/api/videos";
     const method = editingItem ? "PUT" : "POST";
 
     try {
@@ -102,7 +102,7 @@ export default function VideoManagement() {
   const confirmDelete = async () => {
     if (!videoToDelete) return;
     try {
-      const res = await fetch(`http://localhost:3001/api/videos/${videoToDelete.id}`, { method: "DELETE" });
+      const res = await fetch(`https://chefmate-ild4.onrender.com/api/videos/${videoToDelete.id}`, { method: "DELETE" });
       if (!res.ok) throw new Error("ลบไม่สำเร็จ");
       
       showToast("success", "สำเร็จ", "ลบวิดีโอเรียบร้อยแล้ว");

@@ -30,7 +30,7 @@ const handleSubmit = async (e) => {
 
     try {
       // ยิงไปที่ Backend ของเราที่รันอยู่บนพอร์ต 3001
-      const response = await fetch("http://localhost:3001/register", {
+      const response = await fetch("https://chefmate-ild4.onrender.com/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
