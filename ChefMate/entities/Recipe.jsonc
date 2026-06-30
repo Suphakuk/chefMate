@@ -1,0 +1,72 @@
+{
+  "name": "Recipe",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "rice",
+        "noodle",
+        "soup",
+        "curry",
+        "stir_fry",
+        "salad",
+        "dessert",
+        "other"
+      ],
+      "default": "other"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "default": "easy"
+    },
+    "cook_time": {
+      "type": "number",
+      "default": 30
+    },
+    "calories": {
+      "type": "number",
+      "default": 0
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0
+    },
+    "recommended_count": {
+      "type": "number",
+      "default": 0
+    },
+    "favorite_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "title",
+    "title_en"
+  ]
+}

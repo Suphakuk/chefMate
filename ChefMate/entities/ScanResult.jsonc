@@ -1,0 +1,33 @@
+{
+  "name": "ScanResult",
+  "type": "object",
+  "properties": {
+    "image_url": {
+      "type": "string"
+    },
+    "detected_ingredients": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "detection_method": {
+      "type": "string",
+      "enum": [
+        "yolo",
+        "cnn",
+        "manual"
+      ],
+      "default": "yolo"
+    },
+    "confidence_scores": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    }
+  },
+  "required": [
+    "detected_ingredients"
+  ]
+}

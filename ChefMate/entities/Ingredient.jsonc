@@ -1,0 +1,45 @@
+{
+  "name": "Ingredient",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "meat",
+        "vegetable",
+        "fruit",
+        "dairy",
+        "grain",
+        "spice",
+        "sauce",
+        "other"
+      ],
+      "default": "other"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "calories_per_unit": {
+      "type": "number",
+      "default": 0
+    },
+    "unit": {
+      "type": "string",
+      "default": "g"
+    },
+    "scan_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "name_en"
+  ]
+}

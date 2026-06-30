@@ -1,0 +1,32 @@
+{
+  "name": "ModelPerformance",
+  "type": "object",
+  "properties": {
+    "model_name": {
+      "type": "string"
+    },
+    "accuracy": {
+      "type": "number"
+    },
+    "precision": {
+      "type": "number"
+    },
+    "recall": {
+      "type": "number"
+    },
+    "f1_score": {
+      "type": "number"
+    },
+    "map": {
+      "type": "number"
+    },
+    "test_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "model_name",
+    "accuracy"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "RecipeIngredient",
+  "type": "object",
+  "properties": {
+    "recipe_id": {
+      "type": "string"
+    },
+    "ingredient_id": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 1
+    },
+    "unit": {
+      "type": "string",
+      "default": "g"
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "recipe_id",
+    "ingredient_id"
+  ]
+}

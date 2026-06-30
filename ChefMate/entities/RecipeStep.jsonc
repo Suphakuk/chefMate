@@ -1,0 +1,26 @@
+{
+  "name": "RecipeStep",
+  "type": "object",
+  "properties": {
+    "recipe_id": {
+      "type": "string"
+    },
+    "step_number": {
+      "type": "number",
+      "default": 1
+    },
+    "instruction": {
+      "type": "string"
+    },
+    "instruction_en": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "recipe_id",
+    "instruction"
+  ]
+}

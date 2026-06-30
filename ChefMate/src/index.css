@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 210 17% 98%;
+    --foreground: 155 56% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 155 56% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 155 56% 7%;
+    --primary: 153 41% 30%;
+    --primary-foreground: 210 17% 98%;
+    --secondary: 133 50% 90%;
+    --secondary-foreground: 155 56% 7%;
+    --muted: 133 50% 90%;
+    --muted-foreground: 153 10% 35%;
+    --accent: 145 43% 71%;
+    --accent-foreground: 155 56% 7%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 140 20% 88%;
+    --input: 140 20% 88%;
+    --ring: 153 41% 30%;
+    --chart-1: 153 41% 30%;
+    --chart-2: 145 43% 52%;
+    --chart-3: 145 43% 71%;
+    --chart-4: 133 50% 85%;
+    --chart-5: 155 40% 15%;
+    --radius: 0.5rem;
+    --font-heading: 'Lora', 'Noto Serif Thai', serif;
+    --font-body: 'Source Sans 3', 'Noto Serif Thai', sans-serif;
+    --font-display: 'Lora', 'Noto Serif Thai', serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --sidebar-background: 210 17% 98%;
+    --sidebar-foreground: 155 56% 7%;
+    --sidebar-primary: 153 41% 30%;
+    --sidebar-primary-foreground: 210 17% 98%;
+    --sidebar-accent: 133 50% 90%;
+    --sidebar-accent-foreground: 155 56% 7%;
+    --sidebar-border: 140 20% 88%;
+    --sidebar-ring: 153 41% 30%;
+  }
+
+  .dark {
+    --background: 155 56% 7%;
+    --foreground: 210 17% 98%;
+    --card: 155 35% 10%;
+    --card-foreground: 210 17% 98%;
+    --popover: 155 35% 10%;
+    --popover-foreground: 210 17% 98%;
+    --primary: 145 43% 71%;
+    --primary-foreground: 155 56% 7%;
+    --secondary: 153 41% 20%;
+    --secondary-foreground: 210 17% 98%;
+    --muted: 153 25% 14%;
+    --muted-foreground: 145 15% 65%;
+    --accent: 153 41% 30%;
+    --accent-foreground: 210 17% 98%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 153 15% 18%;
+    --input: 153 15% 18%;
+    --ring: 145 43% 71%;
+    --chart-1: 145 43% 71%;
+    --chart-2: 145 43% 52%;
+    --chart-3: 133 50% 75%;
+    --chart-4: 153 41% 30%;
+    --chart-5: 145 30% 55%;
+    --sidebar-background: 155 56% 7%;
+    --sidebar-foreground: 210 17% 98%;
+    --sidebar-primary: 145 43% 71%;
+    --sidebar-primary-foreground: 155 56% 7%;
+    --sidebar-accent: 153 25% 14%;
+    --sidebar-accent-foreground: 210 17% 98%;
+    --sidebar-border: 153 15% 18%;
+    --sidebar-ring: 145 43% 71%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Lora', 'Noto Serif Thai', serif;
+  }
+  .font-body {
+    font-family: 'Source Sans 3', 'Noto Serif Thai', sans-serif;
+  }
+  .drop-cap::first-letter {
+    font-family: 'Lora', 'Noto Serif Thai', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 0.8;
+    float: left;
+    margin-right: 0.75rem;
+    margin-top: 0.3rem;
+    color: hsl(var(--primary));
+  }
+  .magazine-rule {
+    border-top: 2px solid hsl(var(--primary));
+  }
+  .magazine-line {
+    border-top: 1px solid hsl(var(--border));
+  }
+  .pill-search {
+    border-radius: 9999px;
+    border: 1.5px solid hsl(var(--border));
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .pill-search:focus-within {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.06);
+  }
+}
